@@ -1,0 +1,47 @@
+<%= form_with(model: admin_comment, local: true) do |form| %>
+  <% if admin_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_comment.errors.count, "error") %> prohibited this admin_comment from being saved:</h2>
+
+      <ul>
+        <% admin_comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :locale %>
+    <%= form.text_field :locale %>
+  </div>
+
+  <div class="field">
+    <%= form.label :verified %>
+    <%= form.check_box :verified %>
+  </div>
+
+  <div class="field">
+    <%= form.label :commentable_id %>
+    <%= form.text_field :commentable_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :commentable_type %>
+    <%= form.text_field :commentable_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
