@@ -1,19 +1,41 @@
+<h1>
+  <span class="bd-content-title">
+    <%= t('activerecord.models.video.other') %>
+  </span>
+</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @admin_video.title %>
-</p>
+<form>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.title') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_video.title %>">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <iframe width="500" height="320" src="<%= @admin_video.url %>"></iframe>
+      <p><a href="<%= @admin_video.url %>" target="_blank"><%= @admin_video.url %></a></p>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.user') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_video.user.name %>">
+    </div>
+  </div>
 
-<p>
-  <strong>Url:</strong>
-  <%= @admin_video.url %>
-</p>
+  <div class="form-group">
+    <% @admin_video.tags.each do |tag| %>
+      <span class="badge badge-pill badge-primary"><%= tag.name %></span>
+    <% end %>
+  </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @admin_video.user_id %>
-</p>
+</form>
 
-<%= link_to 'Edit', edit_admin_video_path(@admin_video) %> |
-<%= link_to 'Back', admin_videos_path %>
+<hr>
+
+<%= link_to t('helpers.actions.back'), admin_videos_path, class: 'btn btn-sm btn-secondary' %>
+<%= link_to t('helpers.actions.edit'), edit_admin_video_path(@admin_video), class: 'btn btn-sm btn-info' %>
+

@@ -1,6 +1,9 @@
-<h1>Editing Admin News</h1>
+<h1>
+    <span class="bd-content-title">
+        <%= t('helpers.submit.update', model: t('activerecord.models.news.one')) %>
+    </span>
+</h1>
 
-<%= render 'form', admin_news: @admin_news %>
+<hr>
 
-<%= link_to 'Show', @admin_news %> |
-<%= link_to 'Back', admin_news_index_path %>
+<%= render 'form', admin_news: @admin_news, submit: t('helpers.actions.update') %>

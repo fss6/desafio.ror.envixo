@@ -1,7 +1,7 @@
 FROM ruby:2.6.3
 
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
-RUN apt-get update -qq && apt-get install -y libgmp-dev nodejs yarn postgresql-client
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
+RUN apt-get update -qq && apt-get install -y libgmp-dev nodejs postgresql-client
 RUN mkdir /app
 
 WORKDIR /app
@@ -9,6 +9,7 @@ WORKDIR /app
 COPY . /app
 
 RUN bundle install
+RUN npm i -g yarn && yarn
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/

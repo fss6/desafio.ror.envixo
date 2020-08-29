@@ -1,10 +1,12 @@
-class Admin::TagsController < ApplicationController
+class Admin::TagsController < AdminController
   before_action :set_admin_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_locales, only: [:new, :edit, :create, :update]
 
   # GET /admin/tags
   # GET /admin/tags.json
   def index
     @admin_tags = Admin::Tag.all
+    # abort @admin_tags.first.videos.inspect
   end
 
   # GET /admin/tags/1
@@ -25,10 +27,11 @@ class Admin::TagsController < ApplicationController
   # POST /admin/tags.json
   def create
     @admin_tag = Admin::Tag.new(admin_tag_params)
+    @admin_tag.user = current_user
 
     respond_to do |format|
       if @admin_tag.save
-        format.html { redirect_to @admin_tag, notice: 'Tag was successfully created.' }
+        format.html { redirect_to @admin_tag, notice: t('.success') }
         format.json { render :show, status: :created, location: @admin_tag }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class Admin::TagsController < ApplicationController
   def update
     respond_to do |format|
       if @admin_tag.update(admin_tag_params)
-        format.html { redirect_to @admin_tag, notice: 'Tag was successfully updated.' }
+        format.html { redirect_to @admin_tag, notice: t('.success') }
         format.json { render :show, status: :ok, location: @admin_tag }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class Admin::TagsController < ApplicationController
   def destroy
     @admin_tag.destroy
     respond_to do |format|
-      format.html { redirect_to admin_tags_url, notice: 'Tag was successfully destroyed.' }
+      format.html { redirect_to admin_tags_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -65,6 +68,10 @@ class Admin::TagsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_tag
       @admin_tag = Admin::Tag.find(params[:id])
+    end
+
+    def set_locales
+      @locales = Admin::Locale.all
     end
 
     # Only allow a list of trusted parameters through.

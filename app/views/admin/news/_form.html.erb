@@ -1,8 +1,11 @@
 <%= form_with(model: admin_news, local: true) do |form| %>
   <% if admin_news.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(admin_news.errors.count, "error") %> prohibited this admin_news from being saved:</h2>
-
+      <h3>
+        <%= I18n.translate("errors.template.header", 
+              model: t('activerecord.models.news.one'), 
+              count: admin_news.errors.count) %>
+      </h3>
       <ul>
         <% admin_news.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,27 +14,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :subtitle %>
-    <%= form.text_field :subtitle %>
+    <%= form.text_field :subtitle, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class:"form-control", rows: 5 %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="form-group">
+    <%= form.label :tags %>
+    <%= form.collection_select :tag_ids, @tags, :id, :name,
+          { selected: admin_news.tags.pluck(:id), include_blank: true },
+          {class: 'form-control', multiple: true, size: 5} %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= link_to t('helpers.actions.back'), admin_news_index_path, class: 'btn btn-sm btn-secondary' %>
+    <%= form.submit submit, class: 'btn btn-sm btn-success' %>
   </div>
+
 <% end %>

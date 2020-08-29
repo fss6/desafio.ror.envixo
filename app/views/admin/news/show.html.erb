@@ -1,24 +1,50 @@
+<h1>
+  <span class="bd-content-title">
+    <%= t('activerecord.models.news.other') %>
+  </span>
+</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @admin_news.title %>
-</p>
+<form>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.title') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_news.title %>">
+    </div>
+  </div>
 
-<p>
-  <strong>Subtitle:</strong>
-  <%= @admin_news.subtitle %>
-</p>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.subtitle') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_news.subtitle %>">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.user') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_news.user.name %>">
+    </div>
+  </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @admin_news.content %>
-</p>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.content') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_news.content %>">
+    </div>
+  </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @admin_news.user_id %>
-</p>
+  <div class="form-group">
+    <% @admin_news.tags.each do |tag| %>
+      <span class="badge badge-pill badge-primary"><%= tag.name %></span>
+    <% end %>
+  </div>
 
-<%= link_to 'Edit', edit_admin_news_path(@admin_news) %> |
-<%= link_to 'Back', admin_news_index_path %>
+</form>
+
+<hr>
+
+<%= link_to t('helpers.actions.back'), admin_news_index_path, class: 'btn btn-sm btn-secondary' %>
+<%= link_to t('helpers.actions.edit'), edit_admin_news_path(@admin_news), class: 'btn btn-sm btn-info' %>
+

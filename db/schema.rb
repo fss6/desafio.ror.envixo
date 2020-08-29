@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_204139) do
+ActiveRecord::Schema.define(version: 2020_08_28_193442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 2020_08_27_204139) do
     t.index ["user_id"], name: "index_admin_news_on_user_id"
   end
 
+  create_table "admin_news_tags", id: false, force: :cascade do |t|
+    t.bigint "admin_news_id", null: false
+    t.bigint "admin_tag_id", null: false
+  end
+
   create_table "admin_scores", force: :cascade do |t|
     t.integer "value"
     t.bigint "scoreable_id"
@@ -66,6 +71,13 @@ ActiveRecord::Schema.define(version: 2020_08_27_204139) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["locale"], name: "index_admin_tags_on_locale"
     t.index ["user_id"], name: "index_admin_tags_on_user_id"
+  end
+
+  create_table "admin_tags_videos", id: false, force: :cascade do |t|
+    t.bigint "admin_video_id", null: false
+    t.bigint "admin_tag_id", null: false
+    t.index ["admin_tag_id", "admin_video_id"], name: "index_admin_tags_videos_on_admin_tag_id_and_admin_video_id"
+    t.index ["admin_video_id", "admin_tag_id"], name: "index_admin_tags_videos_on_admin_video_id_and_admin_tag_id"
   end
 
   create_table "admin_videos", force: :cascade do |t|

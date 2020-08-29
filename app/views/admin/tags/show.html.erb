@@ -1,19 +1,31 @@
+<h1>
+  <span class="bd-content-title">
+    <%= t('activerecord.models.tag.one') %>
+  </span>
+</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @admin_tag.name %>
-</p>
+<form>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.name') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_tag.name %>">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.locale') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_tag.locale_human %>">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><%= t('.user') %></label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" value="<%= @admin_tag.user.name %>">
+    </div>
+  </div>
+</form>
 
-<p>
-  <strong>Locale:</strong>
-  <%= @admin_tag.locale %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @admin_tag.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_admin_tag_path(@admin_tag) %> |
-<%= link_to 'Back', admin_tags_path %>
+<%= link_to t('helpers.actions.back'), admin_tags_path, class: 'btn btn-sm btn-secondary' %>
+<%= link_to t('helpers.actions.edit'), edit_admin_tag_path(@admin_tag), class: 'btn btn-sm btn-info' %>

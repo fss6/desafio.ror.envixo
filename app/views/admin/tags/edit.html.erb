@@ -1,6 +1,9 @@
-<h1>Editing Admin Tag</h1>
+<h1>
+    <span class="bd-content-title">
+        <%= t('activerecord.models.tag.one') %>
+    </span>
+</h1>
 
-<%= render 'form', admin_tag: @admin_tag %>
+<hr>
 
-<%= link_to 'Show', @admin_tag %> |
-<%= link_to 'Back', admin_tags_path %>
+<%= render 'form', admin_tag: @admin_tag, submit: t('helpers.actions.update') %>

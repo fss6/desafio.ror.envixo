@@ -1,5 +1,6 @@
-class Admin::NewsController < ApplicationController
+class Admin::NewsController < AdminController
   before_action :set_admin_news, only: [:show, :edit, :update, :destroy]
+  before_action :set_tags, only: [:new, :edit, :create, :update]
 
   # GET /admin/news
   # GET /admin/news.json
@@ -25,10 +26,11 @@ class Admin::NewsController < ApplicationController
   # POST /admin/news.json
   def create
     @admin_news = Admin::News.new(admin_news_params)
+    @admin_news.user = current_user
 
     respond_to do |format|
       if @admin_news.save
-        format.html { redirect_to @admin_news, notice: 'News was successfully created.' }
+        format.html { redirect_to @admin_news, notice: t('.success') }
         format.json { render :show, status: :created, location: @admin_news }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class Admin::NewsController < ApplicationController
   def update
     respond_to do |format|
       if @admin_news.update(admin_news_params)
-        format.html { redirect_to @admin_news, notice: 'News was successfully updated.' }
+        format.html { redirect_to @admin_news, notice: t('.success') }
         format.json { render :show, status: :ok, location: @admin_news }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class Admin::NewsController < ApplicationController
   def destroy
     @admin_news.destroy
     respond_to do |format|
-      format.html { redirect_to admin_news_index_url, notice: 'News was successfully destroyed.' }
+      format.html { redirect_to admin_news_index_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -67,8 +69,12 @@ class Admin::NewsController < ApplicationController
       @admin_news = Admin::News.find(params[:id])
     end
 
+    def set_tags
+      @tags = Admin::Tag.by_locale(locale)
+    end
+
     # Only allow a list of trusted parameters through.
     def admin_news_params
-      params.require(:admin_news).permit(:title, :subtitle, :content, :user_id)
+      params.require(:admin_news).permit(:title, :subtitle, :content, :user_id, tag_ids: [])
     end
 end

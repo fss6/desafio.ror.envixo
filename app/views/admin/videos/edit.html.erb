@@ -1,6 +1,9 @@
-<h1>Editing Admin Video</h1>
+<h1>
+    <span class="bd-content-title">
+        <%= t('helpers.submit.update', model: t('activerecord.models.video.one')) %>
+    </span>
+</h1>
 
-<%= render 'form', admin_video: @admin_video %>
+<hr>
 
-<%= link_to 'Show', @admin_video %> |
-<%= link_to 'Back', admin_videos_path %>
+<%= render 'form', admin_video: @admin_video, submit: t('helpers.actions.update') %>
