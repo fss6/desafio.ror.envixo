@@ -1,33 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Admin Comments</h1>
+<h1>
+  <span class="bd-content-title">
+    <%= t('activerecord.models.comment.other') %>
+  </span>
+</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Locale</th>
-      <th>Verified</th>
-      <th>Commentable</th>
-      <th>Commentable type</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @admin_comments.each do |admin_comment| %>
-      <tr>
-        <td><%= admin_comment.content %></td>
-        <td><%= admin_comment.locale %></td>
-        <td><%= admin_comment.verified %></td>
-        <td><%= admin_comment.commentable_id %></td>
-        <td><%= admin_comment.commentable_type %></td>
-        <td><%= admin_comment.user_id %></td>
-        <td><%# link_to 'Show', admin_comment %></td>
-        <td><%# link_to 'Edit', edit_admin_comment_path(admin_comment) %></td>
-        <td><%= link_to 'Destroy', admin_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="list-group list-group-flush">
+  <% @admin_comments.each do |comment| %>
+    <li class="list-group-item">
+      <small class="d-block"><strong><%= comment.locale_human %></strong></small>
+      <small class="d-block"><%= comment.created_at_human %></small>
+      <%= comment.user.name %>
+      <p>- <%= comment.content %></p>
+      <div class="float-right">
+        <%= link_to t('helpers.actions.approve'), admin_comment_path(comment, admin_comment: {verified: true}), method: :put, class: 'btn btn-sm btn-success', 
+        data: { confirm: t('helpers.confirm.destroy') } %>
+        <%= link_to t('helpers.actions.destroy'), comment, method: :delete, class: 'btn btn-sm btn-danger', 
+          data: { confirm: t('helpers.confirm.destroy') } %>
+      </div>
+    </li>
+  <% end %>
+</ul>

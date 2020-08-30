@@ -1,40 +1,10 @@
-class Admin::CommentsController < ApplicationController
-  before_action :set_admin_comment, only: [:show, :edit, :update, :destroy]
+class Admin::CommentsController < AdminController
+  before_action :set_admin_comment, only: [:update, :destroy]
 
   # GET /admin/comments
   # GET /admin/comments.json
   def index
-    @admin_comments = Admin::Comment.all
-  end
-
-  # GET /admin/comments/1
-  # GET /admin/comments/1.json
-  def show
-  end
-
-  # GET /admin/comments/new
-  def new
-    @admin_comment = Admin::Comment.new
-  end
-
-  # GET /admin/comments/1/edit
-  def edit
-  end
-
-  # POST /admin/comments
-  # POST /admin/comments.json
-  def create
-    @admin_comment = Admin::Comment.new(admin_comment_params)
-
-    respond_to do |format|
-      if @admin_comment.save
-        format.html { redirect_to @admin_comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_comment }
-      else
-        format.html { render :new }
-        format.json { render json: @admin_comment.errors, status: :unprocessable_entity }
-      end
-    end
+    @admin_comments = Admin::Comment.unchecked
   end
 
   # PATCH/PUT /admin/comments/1
@@ -42,10 +12,10 @@ class Admin::CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @admin_comment.update(admin_comment_params)
-        format.html { redirect_to @admin_comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to admin_comments_url, notice: t('.success') }
         format.json { render :show, status: :ok, location: @admin_comment }
       else
-        format.html { render :edit }
+        format.html { redirect_to admin_comments_url }
         format.json { render json: @admin_comment.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +26,7 @@ class Admin::CommentsController < ApplicationController
   def destroy
     @admin_comment.destroy
     respond_to do |format|
-      format.html { redirect_to admin_comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to admin_comments_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end
@@ -69,6 +39,6 @@ class Admin::CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_comment_params
-      params.require(:admin_comment).permit(:content, :locale, :verified, :commentable_id, :commentable_type, :user_id)
+      params.require(:admin_comment).permit(:verified)
     end
 end
