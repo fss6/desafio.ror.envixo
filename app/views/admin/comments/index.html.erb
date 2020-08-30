@@ -9,16 +9,16 @@
 <ul class="list-group list-group-flush">
   <% @admin_comments.each do |comment| %>
     <li class="list-group-item">
-      <small class="d-block"><strong><%= comment.locale_human %></strong></small>
-      <small class="d-block"><%= comment.created_at_human %></small>
-      <%= comment.user.name %>
-      <p>- <%= comment.content %></p>
       <div class="float-right">
         <%= link_to t('helpers.actions.approve'), admin_comment_path(comment, admin_comment: {verified: true}), method: :put, class: 'btn btn-sm btn-success', 
         data: { confirm: t('helpers.confirm.destroy') } %>
         <%= link_to t('helpers.actions.destroy'), comment, method: :delete, class: 'btn btn-sm btn-danger', 
           data: { confirm: t('helpers.confirm.destroy') } %>
       </div>
+      <small class="d-block"><strong><%= comment.locale_human %></strong></small>
+      <small class="d-block"><%= comment.created_at_human %></small>
+      <%= comment.user.name %>
+      <p class="lead"><%= comment.content %></p>
     </li>
   <% end %>
 </ul>
