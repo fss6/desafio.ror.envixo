@@ -6,7 +6,6 @@ class Admin::TagsController < AdminController
   # GET /admin/tags.json
   def index
     @admin_tags = Admin::Tag.all
-    # abort @admin_tags.first.videos.inspect
   end
 
   # GET /admin/tags/1

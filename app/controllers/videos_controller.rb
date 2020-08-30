@@ -27,7 +27,6 @@ class VideosController < ApplicationController
         format.html { redirect_to video_path(@video), notice: t('.success') }
         format.json { render :show, status: :ok, location: @video }
       else
-        abort @video.errors.inspect
         format.html { redirect_to video_path(@video), notice: t('.error') }
         format.json { head :no_content }
       end

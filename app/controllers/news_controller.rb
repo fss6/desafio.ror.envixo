@@ -27,7 +27,6 @@ class NewsController < ApplicationController
           format.html { redirect_to news_path(@news), notice: t('.success') }
           format.json { render :show, status: :ok, location: @news }
         else
-          abort @news.errors.inspect
           format.html { redirect_to news_path(@news), notice: t('.error') }
           format.json { head :no_content }
         end
