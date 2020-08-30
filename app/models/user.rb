@@ -6,4 +6,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum locale: { pt: 0, es: 1 }
+
+  def rated?(scoreable)
+    Admin::Score.where(user_id: id)
+      .where(scoreable_id: scoreable.id)
+      .where(scoreable_type: scoreable.class.name)
+      .present?
+  end
 end

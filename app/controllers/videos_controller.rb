@@ -17,6 +17,7 @@ class VideosController < ApplicationController
     end
     
     if admin_video_params.has_key?(:score_attributes)
+      authorize! :create, Admin::Score if current_user.rated?(@video)
       params[:admin_video][:score_attributes].merge!(user_id: current_user.id)
       @video.scores.build(admin_video_params[:score_attributes])
     end

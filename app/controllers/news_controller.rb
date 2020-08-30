@@ -17,6 +17,7 @@ class NewsController < ApplicationController
       end
         
       if admin_news_params.has_key?(:score_attributes)
+        authorize! :create, Admin::Score if current_user.rated?(@news)
         params[:admin_news][:score_attributes].merge!(user_id: current_user.id)
         @news.scores.build(admin_news_params[:score_attributes])
       end

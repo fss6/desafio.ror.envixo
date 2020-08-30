@@ -31,10 +31,12 @@
               <%= current_user.name rescue nil %>
           </a>
           <div class="dropdown-menu">
+            <% if can? :index, Admin::Comment %>
               <%= link_to t('helpers.menu.administration'), 
                   admin_comments_path, 
                   class: "dropdown-item" %>
               <div class="dropdown-divider"></div>
+            <% end %>
               <%= link_to t('helpers.menu.logout'), 
                     destroy_user_session_path, 
                     method: :delete, 
