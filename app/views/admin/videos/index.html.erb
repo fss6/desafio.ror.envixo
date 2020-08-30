@@ -28,7 +28,7 @@
       <tr>
         <td><%= video.title %></td>
         <td><%= video.user.name %></td>
-        <td><%= video.created_at %></td>
+        <td><%= video.created_at_human %></td>
         <td>
           <%= link_to t('helpers.actions.show'), video, class: 'btn btn-sm btn-info' %>
           <%= link_to t('helpers.actions.edit'), edit_admin_video_path(video), class: 'btn btn-sm btn-success' %>

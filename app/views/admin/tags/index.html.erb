@@ -29,7 +29,7 @@
         <td><%= tag.name %></td>
         <td><%= tag.locale_human %></td>
         <td><%= tag.user.name %></td>
-        <td><%= tag.created_at %></td>
+        <td><%= tag.created_at_human %></td>
         <td>
           <%= link_to t('helpers.actions.show'), tag, class: 'btn btn-sm btn-info' %>
           <%= link_to t('helpers.actions.edit'), edit_admin_tag_path(tag), class: 'btn btn-sm btn-success' %>

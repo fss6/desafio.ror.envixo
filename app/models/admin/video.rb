@@ -5,9 +5,23 @@ class Admin::Video < ApplicationRecord
                           foreign_key: :admin_video_id, 
                           association_foreign_key: :admin_tag_id
   accepts_nested_attributes_for :tags, reject_if: proc { |id| id.blank? }
+  has_many :comments, as: :commentable
+  accepts_nested_attributes_for :comments, allow_destroy: true
+  has_many :scores, as: :scoreable
+  accepts_nested_attributes_for :scores, allow_destroy: true
 
   validates :title, :url, presence: true
   validate :url_valid
+
+  def verified_comments(locale)
+    comments.where(verified: true, locale: locale).order(created_at: :asc) 
+  end
+
+  def points
+    total_values = self.scores.sum(:value)
+    total_evaluations = scores.count
+    total_evaluations.zero? ? 0 : (total_values / total_evaluations.to_f).round
+  end 
 
   private
     def url_valid
