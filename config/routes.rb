@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :news
       resources :comments, only: [:index, :update, :destroy]
       resources :tags
+      resources :users, only: [:index, :update, :destroy]
     end
   end
 

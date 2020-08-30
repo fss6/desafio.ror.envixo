@@ -10,11 +10,15 @@ es:
             name: Nome
             content: Contenido
             tags: Etiquetas
+            admin: Administrador
+            deactivated: Desactivado
         video:
         <<: *defaults
         tag:
         <<: *defaults
         news:
+        <<: *defaults
+        user:
         <<: *defaults
     news:
         show:
@@ -62,3 +66,10 @@ es:
                 success: 'El Noticia se actualizó correctamente'
             destroy:
                 success: 'El Noticia se destruyó con éxito'
+        users:
+            index:
+                <<: *defaults 
+            update:
+                success: 'Actualizó correctamente'
+            destroy:
+                success: 'El usuario se desactivado con éxito'

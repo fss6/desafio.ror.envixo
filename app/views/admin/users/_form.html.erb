@@ -1,0 +1,28 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= I18n.translate("errors.template.header", 
+              model: t('activerecord.models.user.one'), 
+              count: user.errors.count) %>
+      </h3>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= link_to t('helpers.actions.back'), users_path, class: 'btn btn-sm btn-secondary' %>
+    <%= form.submit submit, class: 'btn btn-sm btn-success' %>
+  </div>
+
+<% end %>

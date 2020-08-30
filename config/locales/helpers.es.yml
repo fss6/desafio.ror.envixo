@@ -1,5 +1,8 @@
 es:
     helpers:
+        terms:
+            'yes': Si
+            'not': 'No'
         menu:
             website: Sitio web
             administration: Administración
@@ -19,6 +22,8 @@ es:
             back: Regresa
             read_more: Lee mas
             approve: Aprobar
+            deactivated: Desactivar
+            admin: Hacer administrador
         confirm:
             destroy: Estas seguro?
         info:

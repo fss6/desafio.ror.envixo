@@ -13,6 +13,9 @@ es:
             comment:
                 one: Comentario
                 other: Comentarios
+            user:
+                one: Usuario
+                other: Usuarios
         errors:    
             messages:
                 record_invalid: 'La validación falló: %{errors}'

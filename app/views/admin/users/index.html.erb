@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <span class="bd-content-title">
+    <%= t('activerecord.models.user.other') %>
+  </span>
+</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= t '.name' %></th>
+      <th scope="col"><%= t '.email' %></th>
+      <th scope="col"><%= t '.admin' %></th>
+      <th scope="col"><%= t '.deactivated' %></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= is_admin?(user.admin) %></td>
+        <td><%= is_deactivated?(user.deactivated) %></td>
+        <td>
+          <% unless hidden_admin_buttom?(user) %>
+            <%= link_to t('helpers.actions.admin'), 
+                                  admin_user_path(user, {user: { admin: true }}), 
+                                  method: :put, 
+                                  class: 'btn btn-sm btn-info', 
+                                  data: { confirm: t('helpers.confirm.destroy') } %>
+          <% end %>
+
+          <% unless hidden_deactivated_buttom?(user) %>
+            <%= link_to t('helpers.actions.deactivated'), 
+                                  admin_user_path(user), 
+                                  method: :delete, 
+                                  class: 'btn btn-sm btn-danger', 
+                                  data: { confirm: t('helpers.confirm.destroy') } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

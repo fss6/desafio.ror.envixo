@@ -13,4 +13,8 @@ class User < ApplicationRecord
       .where(scoreable_type: scoreable.class.name)
       .present?
   end
+
+  def active_for_authentication?
+    super && !deactivated
+  end
 end
