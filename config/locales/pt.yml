@@ -207,6 +207,10 @@ pt:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros'
   helpers:
+    menu:
+      website: Site
+      administration: Administração
+      logout: Sair
     select:
       prompt: Por favor selecione
     submit:

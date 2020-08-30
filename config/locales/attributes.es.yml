@@ -1,0 +1,64 @@
+es:
+    attributes:
+        defaults: &defaults
+            title: Título
+            subtitle: Subtítulo
+            url: URL
+            user: Creado por
+            created_at: Creado en
+            locale: Localidade
+            name: Nome
+            content: Contenido
+            tags: Etiquetas
+        video:
+        <<: *defaults
+        tag:
+        <<: *defaults
+        news:
+        <<: *defaults
+    news:
+        show:
+            evaluation: Califica la noticia
+            type_comment: 'Escribe un comentario ...'
+        update:
+            success: 'Guardar el éxito'
+    videos:
+        show:
+            evaluation: Califica la video
+            type_comment: 'Escribe un comentario ...'
+        update:
+            success: 'Guardar el éxito'
+    admin:
+        videos:
+            index:
+                <<: *defaults 
+            show:
+                <<: *defaults
+            create:
+                success: 'El Vídeo se creó correctamente'
+            update:
+                success: 'El Vídeo se actualizó correctamente'
+            destroy:
+                success: 'El Vídeo se destruyó con éxito'
+        tags:
+            index:
+                <<: *defaults 
+            show:
+                <<: *defaults
+            create:
+                success: 'El Etiqueta se creó correctamente'
+            update:
+                success: 'El Etiqueta se actualizó correctamente'
+            destroy:
+                success: 'El Etiqueta se destruyó con éxito'
+        news:
+            index:
+                <<: *defaults 
+            show:
+                <<: *defaults
+            create:
+                success: 'El Noticia se creó correctamente'
+            update:
+                success: 'El Noticia se actualizó correctamente'
+            destroy:
+                success: 'El Noticia se destruyó con éxito'
