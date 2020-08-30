@@ -104,15 +104,6 @@ ActiveRecord::Schema.define(version: 2020_08_28_193442) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "videos", force: :cascade do |t|
-    t.string "title"
-    t.string "url"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_videos_on_user_id"
-  end
-
   add_foreign_key "admin_comments", "users"
   add_foreign_key "admin_friends", "users"
   add_foreign_key "admin_friends", "users", column: "friend_id"
@@ -120,5 +111,4 @@ ActiveRecord::Schema.define(version: 2020_08_28_193442) do
   add_foreign_key "admin_scores", "users"
   add_foreign_key "admin_tags", "users"
   add_foreign_key "admin_videos", "users"
-  add_foreign_key "videos", "users"
 end

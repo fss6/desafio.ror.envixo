@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DesafioRorEnvixo</title>
+    <title>Envixo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,7 @@
 
     <body>
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Rails</a>
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><%= t('helpers.menu.administration') %></a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,6 +53,12 @@
                                 <a class="nav-link active" href="<%= admin_tags_path %>">
                                     <span data-feather="home"></span>
                                     <%= t('activerecord.models.tag.other')%>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="<%= admin_comments_path %>">
+                                    <span data-feather="home"></span>
+                                    <%= t('activerecord.models.comment.other')%>
                                 </a>
                             </li>
                         </ul>

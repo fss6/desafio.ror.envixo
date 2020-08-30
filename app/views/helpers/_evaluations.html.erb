@@ -1,0 +1,11 @@
+<div class="mb-4">
+    <strong class="d-block"><%= legend %></strong>
+    <%= form_with(model: object, url: url, local: true) do |form| %>
+        <% (1..5).each do |v| %>
+            <%= form.submit v.to_s, 
+                name: "#{object.class.table_name.singularize}[score_attributes][value]",
+                class: 'btn btn-sm btn-secondary', 
+                value: v %>
+            <% end %>
+    <% end %>
+</div>

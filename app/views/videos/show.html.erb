@@ -1,0 +1,45 @@
+
+<div>
+    <% @tags.each do |tag| %>
+        <span class="badge badge-info"><%= tag.name %></span>
+    <% end %>
+</div>
+<h1 class="display-5"><%= @video.title %></h1>
+<div class="mb-4">
+    <%= render 'helpers/start_rating', points: @video.points %>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="<%= @video.url %>" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <%= render 'helpers/evaluations', object: @video, url: video_path(@video), legend: t('.evaluation') %>
+        
+        <p id="notice"><%= notice %></p>
+
+        <%= form_with(model: @video, url: video_path(@video), local: true) do |form| %>
+            <%= form.text_area "comment_attributes[content]", 
+                class:"form-control mb-2",
+                placeholder: t('.type_comment'),
+                required: true,
+                rows: 7 %>
+            <%= form.submit t('helpers.actions.create'), class: 'btn btn-success float-right' %>
+        <% end %>
+    </div>
+</div>
+
+<hr class="my-4">
+
+<!-- Comments -->
+<div class="mt-5">
+    <% @comments.each do |comment| %>
+        <small>
+            <span class="text-primary"><%= comment.user.name %></span>
+            <span><%= comment.created_at_human %></span>
+        </small>
+        <p><%= comment.content %></p>
+    <% end %>
+</div>

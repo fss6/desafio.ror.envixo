@@ -1,0 +1,39 @@
+<div class="jumbotron">
+    <div>
+        <% @tags.each do |tag| %>
+            <span class="badge badge-info"><%= tag.name %></span>
+        <% end %>
+    </div>
+    <h1 class="display-5"><%= @news.title %></h1>
+    <p class="lead"><%= @news.subtitle %></p>
+    
+    <%= render 'helpers/start_rating', points: @news.points %>
+</div>
+
+<p><%= @news.content %></p>
+
+<hr class="my-4">
+
+<%= render 'helpers/evaluations', object: @news, url: news_path(@news), legend: t('.evaluation') %>
+
+<p id="notice"><%= notice %></p>
+
+<%= form_with(model: @news, url: news_path(@news), local: true) do |form| %>
+    <%= form.text_area "comment_attributes[content]", 
+        class:"form-control mb-2",
+        placeholder: t('.type_comment'),
+        required: true,
+        rows: 3 %>
+    <%= form.submit 'enviar', class: 'btn btn-success float-right' %>
+<% end %>
+
+<!-- Comments -->
+<div class="mt-5">
+    <% @comments.each do |comment| %>
+        <small>
+            <span class="text-primary"><%= comment.user.name %></span>
+            <span><%= comment.created_at_human %></span>
+        </small>
+        <p><%= comment.content %></p>
+    <% end %>
+</div>

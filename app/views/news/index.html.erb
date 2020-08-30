@@ -1,0 +1,16 @@
+
+<div class="row">
+    <% @news.each do |news| %>    
+        <div class="col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <small class=""><%= news.created_at_human %></small>
+                    <h5 class="card-title mt-4"><%= news.title %></h5>
+                    <h6 class="card-subtitle mb-4 text-muted"><%= news.subtitle %></h6>
+                    <%= render 'helpers/start_rating', points: news.points %>
+                    <%= link_to t('helpers.actions.read_more'), news_path(news), class: 'btn btn-primary float-right' %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

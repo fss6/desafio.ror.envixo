@@ -10,4 +10,10 @@ Rails.application.routes.draw do
       resources :tags
     end
   end
+
+  scope "(:locale)", locale: /pt|es/ do
+    resources :videos, only: [:index, :show, :update]
+    resources :news, only: [:index, :show, :update]
+    root to: "news#index"
+  end
 end
