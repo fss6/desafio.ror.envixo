@@ -11,13 +11,29 @@
   </head>
 
     <body>
-        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <nav class="navbar navbar-dark sticky-top p-1 bg-dark flex-md-nowrap p-0 shadow">
             <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><%= t('helpers.menu.administration') %></a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <span class="nav-item dropdown px-3">
+            <ul class="navbar-nav ml-5 mr-auto">
+            </ul>
+            <span class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <%= current_user.name rescue nil %>
+                </a>
+                <div class="dropdown-menu">
+                    <%= link_to t('helpers.menu.website'), 
+                        news_index_url, 
+                        class: "dropdown-item" %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to t('helpers.menu.logout'), 
+                            destroy_user_session_path, 
+                            method: :delete, 
+                            class: "dropdown-item" %>
+                </div>
+            </span>
+            <span class="nav-item dropdown px-2">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <%= t('language') %>
                 </a>
