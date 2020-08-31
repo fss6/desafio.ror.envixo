@@ -18,11 +18,12 @@ docker-compose run web rails db:create db:migrate db:seed
 docker-compose run web rails test
 ```
 
-* Used Gems
-  - Devise
-  - Cancancan
-  - Ransack
-  - Faker (only development)
+* External libs used
+  - [Gem] Devise
+  - [Gem] Cancancan 
+  - [Gem] Ransack
+  - [Gem] Faker (only development)
+  - [Webpacker] Bootstartp
 
 * Used Ruby on Rails resources
   - Associations
@@ -32,5 +33,7 @@ docker-compose run web rails test
     - has_and_belongs_to_many
     - join_table
   - Internationalization (I18n)
+  - Nested attributes
+  - Layouts
   - othres ...
     
