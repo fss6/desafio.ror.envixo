@@ -1,10 +1,25 @@
+<div class="m-3">
+    <%= search_form_for @q, url: news_index_url, html: { class: 'mb-5'} do |f| %>
+        <div class="input-group">
+            <%= f.search_field :title_or_subtitle_or_tags_name_cont, 
+                placeholder: news_placeholder_search_field,
+                class: 'form-control'%>
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit">
+                    <%= t('helpers.actions.search') %>
+                </button>
+            </div>
+        </div>
+    <% end %>
+</div>
 
 <div class="row">
     <% @news.each do |news| %>    
         <div class="col-sm-6 mb-4">
             <div class="card shadow bg-white rounded">
                 <div class="card-body">
-                    <small class=""><%= news.created_at_human %></small>
+                    <small class="d-block"><%= news.created_at_human %></small>
+                    <%= render 'helpers/tags', tags: news.tags %>
                     <h5 class="card-title mt-4"><%= news.title %></h5>
                     <h6 class="card-subtitle mb-4 text-muted"><%= news.subtitle %></h6>
                     <%= render 'helpers/start_rating', points: news.points %>

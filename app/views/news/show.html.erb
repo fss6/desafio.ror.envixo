@@ -1,9 +1,6 @@
-<div class="jumbotron">
-    <div>
-        <% @tags.each do |tag| %>
-            <span class="badge badge-info"><%= tag.name %></span>
-        <% end %>
-    </div>
+<%= render 'helpers/tags', tags: @tags %>
+
+<div class="jumbotron mt-3">
     <h1 class="display-5"><%= @news.title %></h1>
     <p class="lead"><%= @news.subtitle %></p>
     

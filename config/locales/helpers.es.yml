@@ -27,10 +27,12 @@ es:
             accept: Aceptar la invitacion
             waiting: Esperando aceptar
             reject: Rechazar
+            search: Buscar
         confirm:
             destroy: Estas seguro?
         info:
             url: 'Ingrese una URL válida, por ejemplo: http(s)://www.example.com'
+            search: Buscar por
         number:
             currency:
                 format:

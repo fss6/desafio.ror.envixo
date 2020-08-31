@@ -12,6 +12,7 @@ es:
             tags: Etiquetas
             admin: Administrador
             deactivated: Desactivado
+            tag: Etiqueta
         video:
         <<: *defaults
         tag:

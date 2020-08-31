@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   def index
-    @videos = Admin::Video.all
+    @q = Admin::Video.ransack(params[:q])
+    @videos = @q.result(distinct: true)
   end
 
   def show
