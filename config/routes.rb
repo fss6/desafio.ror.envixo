@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   scope "(:locale)", locale: /pt|es/ do
+    resources :friends, only: [:index, :update, :destroy]
+    resources :users, only: [:show, :update]
     resources :videos, only: [:index, :show, :update]
     resources :news, only: [:index, :show, :update]
     root to: "news#index"

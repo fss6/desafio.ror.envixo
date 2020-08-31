@@ -1,0 +1,33 @@
+<% if @wating_friends.present? || @to_accept_friends.present? || @friends.present? %>
+    <ul class="list-group list-group-flush shadow p-3 mb-5 bg-white rounded">
+        <% @wating_friends.each do |friend|%>
+            <li class="list-group-item">
+                <div class="float-right">
+                    <%= link_to t('helpers.actions.accept'), friend_path(friend, friend: {}), 
+                            method: :put,
+                            class: 'btn btn-sm btn-success' %>
+                    <%= link_to t('helpers.actions.reject'), friend_path(friend, friend: {}), 
+                            method: :delete,
+                            class: 'btn btn-sm btn-danger' %>
+                </div>
+                <h4 class="d-block"><%= friend.user.name %></h4>
+                <small class="d-block"><%= friend.user.email %></small>
+            </li>
+        <% end %>
+
+        <% @to_accept_friends.each do |friend|%>
+            <li class="list-group-item">
+                <small class="text-danger"><%= t('helpers.actions.waiting') %></small>
+                <h4 class="d-block"><%= friend.friend.name %></h4>
+                <small class="d-block"><%= friend.friend.email %></small>
+            </li>
+        <% end %>
+
+        <% @friends.each do |friend|%>
+            <li class="list-group-item">
+                <h4 class="d-block"><%= friend.friend.name %></h4>
+                <small class="d-block"><%= friend.friend.email %></small>
+            </li>
+        <% end %>
+    </ul>
+<% end %>

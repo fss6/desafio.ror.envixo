@@ -5,7 +5,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum locale: { pt: 0, es: 1 }
+  has_many :friends, -> { where(accept: true).order(id: :asc) },
+                        class_name: 'Admin::Friend', 
+                        foreign_key: :user_id
+  has_many :wating_friends, -> { where(accept: false).order(created_at: :asc) },
+                        class_name: 'Admin::Friend', 
+                        foreign_key: :friend_id
+  has_many :to_accept_friends, -> { where(accept: false).order(created_at: :asc) },
+                        class_name: 'Admin::Friend', 
+                        foreign_key: :user_id
+  
+
+  def has_not_invitation_friend?(friend)
+    Admin::Friend.where(user_id: id).where(friend_id: friend.id).empty? && 
+      Admin::Friend.where(user_id: friend.id).where(friend_id: id).empty?
+  end
 
   def rated?(scoreable)
     Admin::Score.where(user_id: id)

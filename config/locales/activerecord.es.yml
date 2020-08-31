@@ -16,6 +16,9 @@ es:
             user:
                 one: Usuario
                 other: Usuarios
+            friend:
+                one: Amigo
+                other: Amigos
         errors:    
             messages:
                 record_invalid: 'La validación falló: %{errors}'

@@ -1,0 +1,13 @@
+<div class="card">
+  <h5 class="card-header"></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.name %></h5>
+    <p class="card-text"><%= @user.email %></p>
+    <% if current_user.has_not_invitation_friend?(@user) && @user != current_user %>
+      <%= link_to t('helpers.actions.connect'), 
+                  user_path(@user, user: {friend_attributes: {friend_id: @user.id}}), 
+                  method: :put, 
+                  class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

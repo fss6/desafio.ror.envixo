@@ -24,6 +24,9 @@ es:
             approve: Aprobar
             deactivated: Desactivar
             admin: Hacer administrador
+            accept: Aceptar la invitacion
+            waiting: Esperando aceptar
+            reject: Rechazar
         confirm:
             destroy: Estas seguro?
         info:

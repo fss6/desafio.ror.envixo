@@ -37,9 +37,11 @@
 <!-- Comments -->
 <div class="mt-5">
     <% @comments.each do |comment| %>
+        <span class="d-block text-primary">
+            <%= link_to comment.user.name, user_path(comment.user) %>
+        </span>
         <small>
-            <span class="text-primary"><%= comment.user.name %></span>
-            <span><%= comment.created_at_human %></span>
+            <span><strong><%= comment.created_at_human %></strong></span>
         </small>
         <p><%= comment.content %></p>
     <% end %>
