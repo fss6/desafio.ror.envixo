@@ -11,7 +11,7 @@ docker-compose run web rails db:create db:migrate db:seed
     - **email:** admin@admin.com
     - **password:** admin@123
   - [user]:
-    - **email:** user@user.com, 
+    - **email:** user@user.com
     - **password:** user@123
 * Run tests
 ```
