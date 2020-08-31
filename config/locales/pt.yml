@@ -227,7 +227,9 @@ pt:
     confirm:
         destroy: Você tem certeza?
     info:
-        url: 'Insira uma URL válida, por exemplo: http(s)://www.example.com'
+      url: 'Insira uma URL válida, por exemplo: http(s)://www.example.com'
+      signin: Por favor, Entrar
+      signup: Cadastrar
   number:
     currency:
       format:

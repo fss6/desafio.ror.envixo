@@ -18,5 +18,11 @@ module DesafioRorEnvixo
     
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.default_locale = :pt
+
+    config.to_prepare do
+      Devise::SessionsController.layout "devise"
+      Devise::SessionsController.layout "devise"
+      # Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "your_layout_name" }    
+    end
   end
 end

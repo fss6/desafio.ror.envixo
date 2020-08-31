@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Envixo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <span class="nav-item dropdown float-right">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= t('language') %>
+        </a>
+        <div class="dropdown-menu">
+            <% Admin::Locale.all.each do |item| %>
+                <%= link_to item.first, 
+                    url_for(locale: item.last), 
+                    class: "dropdown-item" %>
+            <% end %>
+        </div>
+    </span>
+    <div class="mt-2">
+      <%= yield %>
+    </div>
+  </body>
+</html>

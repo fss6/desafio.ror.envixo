@@ -13,6 +13,8 @@ es:
             admin: Administrador
             deactivated: Desactivado
             tag: Etiqueta
+            password: Contraseña
+            password_confirmation: Confirmación de contraseña
         video:
         <<: *defaults
         tag:

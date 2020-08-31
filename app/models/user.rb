@@ -14,8 +14,10 @@ class User < ApplicationRecord
   has_many :to_accept_friends, -> { where(accept: false).order(created_at: :asc) },
                         class_name: 'Admin::Friend', 
                         foreign_key: :user_id
-  
 
+
+  validates :name, presence: true
+  
   def has_not_invitation_friend?(friend)
     Admin::Friend.where(user_id: id).where(friend_id: friend.id).empty? && 
       Admin::Friend.where(user_id: friend.id).where(friend_id: id).empty?

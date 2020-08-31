@@ -33,6 +33,8 @@ es:
         info:
             url: 'Ingrese una URL válida, por ejemplo: http(s)://www.example.com'
             search: Buscar por
+            signin: Por favor, Ingresa
+            signup: Regístrate
         number:
             currency:
                 format:
