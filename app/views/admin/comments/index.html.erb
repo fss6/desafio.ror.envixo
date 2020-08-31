@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render 'helpers/notice' %>
 
 <h1>
   <span class="bd-content-title">
@@ -15,9 +15,13 @@
         <%= link_to t('helpers.actions.destroy'), comment, method: :delete, class: 'btn btn-sm btn-danger', 
           data: { confirm: t('helpers.confirm.destroy') } %>
       </div>
-      <small class="d-block"><strong><%= comment.locale_human %></strong></small>
-      <small class="d-block"><%= comment.created_at_human %></small>
-      <%= comment.user.name %>
+      <strong>
+      <span class="badge badge-light">
+        <%= comment.commentable_translate_by_class_name %>
+      </span>
+      <span class="badge badge-light"><%= comment.locale_human %></span>
+      <span class="badge badge-light"><%= comment.created_at_human %></span>
+      <span class="d-block"><strong><%= comment.user.name %><strong></span>
       <p class="lead"><%= comment.content %></p>
     </li>
   <% end %>

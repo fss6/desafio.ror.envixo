@@ -16,7 +16,7 @@
         
         <%= render 'helpers/evaluations', object: @video, url: video_path(@video), legend: t('.evaluation') %>
         
-        <p id="notice"><%= notice %></p>
+        <%= render 'helpers/notice' %>
         
         <%= form_with(model: @video, url: video_path(@video), local: true) do |form| %>
             <%= form.text_area "comment_attributes[content]", 

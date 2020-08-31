@@ -13,7 +13,7 @@
 
 <%= render 'helpers/evaluations', object: @news, url: news_path(@news), legend: t('.evaluation') %>
 
-<p id="notice"><%= notice %></p>
+<%= render 'helpers/notice' %>
 
 <%= form_with(model: @news, url: news_path(@news), local: true) do |form| %>
     <%= form.text_area "comment_attributes[content]", 

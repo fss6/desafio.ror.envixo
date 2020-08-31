@@ -16,7 +16,7 @@
 
   <%= f.label :password %>
   <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
+  <em> ( <%= t('helpers.info.characters_minimum', count: @minimum_password_length) %> )</em>
   <% end %>
   <%= f.password_field :password, class:"form-control mb-2", autocomplete: "new-password" %>
 
@@ -24,7 +24,7 @@
   <%= f.password_field :password_confirmation, class:"form-control mb-2", autocomplete: "new-password" %>
 
   <div class="actions">
-    <%= f.submit "Sign up", class: 'btn btn btn-primary btn-block' %>
+    <%= f.submit t('helpers.actions.signup'), class: 'btn btn btn-primary btn-block' %>
     <%= render "devise/shared/links" %>
   </div>
 <% end %>

@@ -3,7 +3,7 @@
       html: {class: "form-signin"}) do |f| %>
   
   <h1 class="h3 mb-3 font-weight-normal"><%= t('helpers.info.signin') %></h1>
-  
+
   <%= f.label :email %>
   <%= f.email_field :email, class:"form-control mb-2", autofocus: true, autocomplete: "email" %>
   
@@ -11,10 +11,9 @@
   <%= f.password_field :password, class:"form-control", autocomplete: "current-password" %>
   
   <div class="actions">
-    <%= f.submit "Log in", class: 'btn btn btn-primary btn-block' %>
+    <%= f.submit t('helpers.actions.signin'), class: 'btn btn btn-primary btn-block' %>
     <%= render "devise/shared/links" %>
   </div>
-
 <% end %>
 
 
