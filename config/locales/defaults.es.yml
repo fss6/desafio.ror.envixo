@@ -102,6 +102,7 @@ es:
     errors:
         format: "%{attribute} %{message}"
         messages:
+            not_saved: No se pudo registrar
             url_invalid: 'no válida'
             accepted: debe ser aceptado
             blank: no puede estar en blanco
@@ -125,19 +126,74 @@ es:
             required: debe existir
             taken: ya está en uso
             too_long:
-            one: es demasiado largo (1 carácter máximo)
-            other: es demasiado largo (%{count} caracteres máximo)
+                one: es demasiado largo (1 carácter máximo)
+                other: es demasiado largo (%{count} caracteres máximo)
             too_short:
-            one: es demasiado corto (1 carácter mínimo)
-            other: es demasiado corto (%{count} caracteres mínimo)
+                one: es demasiado corto (1 carácter mínimo)
+                other: es demasiado corto (%{count} caracteres mínimo)
             wrong_length:
-            one: no tiene la longitud correcta (1 carácter exactos)
-            other: no tiene la longitud correcta (%{count} caracteres exactos)
+                one: no tiene la longitud correcta (1 carácter exactos)
+                other: no tiene la longitud correcta (%{count} caracteres exactos)
         template:
             body: 'Se encontraron problemas con los siguientes campos:'
             header:
                 one: No se pudo guardar este/a %{model} porque se encontró 1 error
                 other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+    number:
+        currency:
+            format:
+            delimiter: "."
+            format: "%n %u"
+            precision: 2
+            separator: ","
+            significant: false
+            strip_insignificant_zeros: false
+            unit: "€"
+        format:
+            delimiter: "."
+            precision: 3
+            separator: ","
+            significant: false
+            strip_insignificant_zeros: false
+        human:
+            decimal_units:
+            format: "%n %u"
+            units:
+                billion: mil millones
+                million:
+                one: millón
+                other: millones
+                quadrillion: mil billones
+                thousand: mil
+                trillion:
+                one: billón
+                other: billones
+                unit: ''
+            format:
+            delimiter: ''
+            precision: 1
+            significant: true
+            strip_insignificant_zeros: true
+        storage_units:
+            format: "%n %u"
+            units:
+                byte:
+                one: Byte
+                other: Bytes
+                eb: EB
+                gb: GB
+                kb: KB
+                mb: MB
+                pb: PB
+                tb: TB
+    percentage:
+        format:
+        delimiter: ''
+        format: "%n %"
+    precision:
+        format:
+        delimiter: ''
+        
     support:
         array:
             last_word_connector: " y "

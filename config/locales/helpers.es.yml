@@ -28,64 +28,13 @@ es:
             waiting: Esperando aceptar
             reject: Rechazar
             search: Buscar
+            signin: Ingrese
+            signup: Regístrate
         confirm:
             destroy: Estas seguro?
         info:
             url: 'Ingrese una URL válida, por ejemplo: http(s)://www.example.com'
             search: Buscar por
-            signin: Por favor, Ingresa
+            signin: Ingrese sus credenciales
             signup: Regístrate
-        number:
-            currency:
-                format:
-                delimiter: "."
-                format: "%n %u"
-                precision: 2
-                separator: ","
-                significant: false
-                strip_insignificant_zeros: false
-                unit: "€"
-            format:
-                delimiter: "."
-                precision: 3
-                separator: ","
-                significant: false
-                strip_insignificant_zeros: false
-            human:
-                decimal_units:
-                format: "%n %u"
-                units:
-                    billion: mil millones
-                    million:
-                    one: millón
-                    other: millones
-                    quadrillion: mil billones
-                    thousand: mil
-                    trillion:
-                    one: billón
-                    other: billones
-                    unit: ''
-                format:
-                delimiter: ''
-                precision: 1
-                significant: true
-                strip_insignificant_zeros: true
-            storage_units:
-                format: "%n %u"
-                units:
-                    byte:
-                    one: Byte
-                    other: Bytes
-                    eb: EB
-                    gb: GB
-                    kb: KB
-                    mb: MB
-                    pb: PB
-                    tb: TB
-        percentage:
-            format:
-            delimiter: ''
-            format: "%n %"
-        precision:
-            format:
-            delimiter: ''
+            characters_minimum: Mínimo %{count} caracteres

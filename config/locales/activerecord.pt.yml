@@ -1,0 +1,27 @@
+pt:
+    activerecord:
+        models:
+            video:
+                one: Vídeo
+                other: Vídeos
+            tag:
+                one: Tag
+                other: Tags
+            news:
+                one: Notícia
+                other: Notícias
+            comment:
+                one: Comentário
+                other: Comentários
+            user:
+                one: Usuário
+                other: Usuários
+            friend:
+                one: Amigo
+                other: Amigos
+        errors:
+            messages:
+                record_invalid: 'A validação falhou: %{errors}'
+                restrict_dependent_destroy:
+                has_one: Não é possível excluir o registro pois existe um %{record} dependente
+                has_many: Não é possível excluir o registro pois existem %{record} dependentes

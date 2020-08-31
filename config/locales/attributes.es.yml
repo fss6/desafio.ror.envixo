@@ -7,7 +7,7 @@ es:
             user: Creado por
             created_at: Creado en
             locale: Localidade
-            name: Nome
+            name: Nombre
             content: Contenido
             tags: Etiquetas
             admin: Administrador
@@ -76,3 +76,10 @@ es:
                 success: 'Actualizó correctamente'
             destroy:
                 success: 'El usuario se desactivado con éxito'
+        comments:
+            index:
+                <<: *defaults 
+            update:
+                success: 'Actualizó correctamente'
+            destroy:
+                success: 'Comentario se destruyó con éxito'

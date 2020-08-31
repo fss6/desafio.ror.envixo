@@ -1,0 +1,40 @@
+pt:
+    helpers:
+        terms:
+            'yes': Sim
+            'not': 'Não'
+        menu:
+            website: Site
+            administration: Administração
+            logout: Sair
+        select:
+            prompt: Por favor selecione
+        submit:
+            create: Criar %{model}
+            submit: Salvar %{model}
+            update: Atualizar %{model}
+        actions:
+            create: Cadastrar
+            edit: Editar
+            update: Atualizar
+            destroy: Deletar
+            show: Detalhe
+            back: Voltar
+            read_more: Ver mais
+            approve: Aprovar
+            deactivated: Desativar
+            admin: Tonar administrador
+            accept: Aceitar convite
+            waiting: Aguardando aceitação
+            reject: Recusar
+            search: Consultar
+            signin: Entrar
+            signup: Cadastrar
+        confirm:
+            destroy: Você tem certeza?
+        info:
+            url: 'Insira uma URL válida, por exemplo: http(s)://www.example.com'
+            search: Consultar por
+            signin: Digite suas credenciais
+            signup: Cadastrar
+            characters_minimum: "%{count} caracteres no mínimo"

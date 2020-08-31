@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   devise_for :users
+  get 'users', to: redirect('/')
 
   namespace :admin do
     scope "(:locale)", locale: /pt|es/ do

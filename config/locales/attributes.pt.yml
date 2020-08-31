@@ -1,0 +1,85 @@
+pt:
+    attributes:
+        defaults: &defaults
+            title: Título
+            subtitle: Subtítulo
+            url: URL
+            user: Criado por
+            created_at: Criado em
+            locale: Localidade
+            name: Nome
+            content: Conteúdo
+            tags: Tags
+            admin: Administrador
+            deactivated: Desativado
+            tag: Tag
+            password: Senha
+            password_confirmation: Confirmação de senha
+        video:
+        <<: *defaults
+        tag:
+        <<: *defaults
+        news:
+        <<: *defaults
+        user:
+        <<: *defaults
+    news:
+        show:
+            evaluation: Avaliar notícia
+            type_comment: 'Escreva um comentário ...'
+        update:
+            success: 'Salvo com sucesso'
+    videos:
+        show:
+            evaluation: Avaliar video
+            type_comment: 'Escreva um comentário ...'
+        update:
+            success: 'Salvo com sucesso'
+    admin:
+        videos:
+            index:
+                <<: *defaults 
+            show:
+                <<: *defaults
+            create:
+                success: 'Vídeo criado com sucesso'
+            update:
+                success: 'Vídeo atualizado com sucesso'
+            destroy:
+                success: 'Vídeo removido com sucesso'
+        tags:
+            index:
+                <<: *defaults 
+            show:
+                <<: *defaults
+            create:
+                success: 'Tag criada com sucesso'
+            update:
+                success: 'Tag atualizada com sucesso'
+            destroy:
+                success: 'Tag removida com sucesso'
+        news:
+            index:
+                <<: *defaults 
+            show:
+                <<: *defaults
+            create:
+                success: 'Notícia criada com sucesso'
+            update:
+                success: 'Notícia atualizada com sucesso'
+            destroy:
+                success: 'Notícia removida com sucesso' 
+        users:
+            index:
+                <<: *defaults 
+            update:
+                success: 'Atualizado com sucesso'
+            destroy:
+                success: 'Usuário desativado com sucesso'
+        comments:
+            index:
+                <<: *defaults 
+            update:
+                success: 'Atualizado com sucesso'
+            destroy:
+                success: 'Comentário removido com sucesso'
